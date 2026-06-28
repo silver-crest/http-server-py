@@ -1,7 +1,7 @@
 import socket
 import threading
 
-from http_data import Request, Reponse
+from http_data import Request, Response
 
 
 class Server:
@@ -18,7 +18,7 @@ class Server:
 
 def handle_client(conn: socket.socket):
     request = Request(conn.recv(1024).decode())
-    response = Reponse()
+    response = Response()
     response.create_html([
         ("h1", request.path),
         ("h2", request["User-Agent"]),
