@@ -18,7 +18,7 @@ class Reponse:
         self.html = ""
 
     def create_html(self, elements: list[tuple[str, str]]):
-        elements = map(lambda tag, content: f"<{tag}>{content}</{tag}>", elements)
+        elements = map(lambda x: f"<{x[0]}>{x[1]}</{x[0]}>", elements)
         elements = "\n".join(elements)
         self.html = f"""<html>
             <body>
