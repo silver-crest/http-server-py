@@ -1,6 +1,9 @@
 import socket
 import threading
 
+from http_data import Request, Reponse
+
+
 class Server:
     def __init__(self, port: int):
         self.host: str = "localhost"
@@ -14,7 +17,10 @@ class Server:
             t.start()
 
 def handle_client(conn: socket.socket):
-    request = conn.recv(1024).decode()
-    print(request)
-    lines = request.split("\n")
-
+    request = Request(conn.recv(1024).decode())
+    response = Reponse()
+    response.create_html([
+        ("h1", request.path),
+        ("h2", request["User-Agent"]),
+    ])
+    conn.send(str(response).encode())
