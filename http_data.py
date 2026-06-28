@@ -11,7 +11,7 @@ class Request:
             raise IndexError
         return match[match.index(":") + 2: ]
 
-class Reponse:
+class Response:
     def __init__(self):
         self.headers: str = "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\nConnection: close\r\n"
         self.content_header = ""
