@@ -3,7 +3,7 @@ class Request:
         self.lines: list[str] = content.splitlines()
         self.path = self.lines[0].split()[1]
 
-    def __getitem__(self, item: str):
+    def __getitem__(self, item: str) -> str:
         search = filter(lambda line: line.startswith(item), self.lines)
         try:
             match: str = next(search)
