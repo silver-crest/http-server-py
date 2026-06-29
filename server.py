@@ -24,3 +24,4 @@ def handle_client(conn: socket.socket):
         ("h2", request["User-Agent"]),
     ])
     conn.send(str(response).encode())
+    conn.close()
